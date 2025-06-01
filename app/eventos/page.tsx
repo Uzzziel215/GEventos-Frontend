@@ -29,7 +29,6 @@ interface Evento {
 }
 
 export default function EventosPage() {
-  console.log("Valor de NEXT_PUBLIC_IMAGE_BASE_URL en Vercel:", process.env.NEXT_PUBLIC_IMAGE_BASE_URL);
   const [eventos, setEventos] = useState<Evento[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
