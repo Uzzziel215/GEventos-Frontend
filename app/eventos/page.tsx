@@ -29,6 +29,7 @@ interface Evento {
 }
 
 export default function EventosPage() {
+  console.log("Valor de NEXT_PUBLIC_IMAGE_BASE_URL en Vercel:", process.env.NEXT_PUBLIC_IMAGE_BASE_URL);
   const [eventos, setEventos] = useState<Evento[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -118,7 +119,7 @@ export default function EventosPage() {
               <Link href={`/eventos/${evento.eventoid}`} passHref>
               <div className="w-full overflow-hidden" style={{ aspectRatio: '2 / 1' }}>
                 <Image
-                  src={evento.imagen ? `http://localhost:3001/uploads/events/${evento.imagen}` : "/placeholder.svg"}
+                  src={evento.imagen ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL || 'http://localhost:3001/uploads/events/'}${evento.imagen}` : "/placeholder.svg"}
                   alt={evento.nombre}
                   width={400}
                   height={200}
